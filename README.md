@@ -21,7 +21,7 @@ This fork introduces several important improvements over the original repository
 2. **Configurable Token Length**: Token length can be customized (3-6 digits) through settings
 3. **Improved Test Coverage**: More comprehensive testing for better reliability
 4. **Fixed Custom Field Bug**: The original repository had a bug where custom email field names worked only in signals but not in other parts of the code (it used hardcoded "email" field in many places). This fork ensures that custom field names work consistently throughout the codebase
-
+5. **Fixed OTP Invalidation Logic**: In the original package, only OTPs generated within the user-defined token lifetime were invalidated—leaving older expired OTPs still active in the system. Over time, this led to a buildup of stale tokens, which could eventually exhaust the pool of possible unique OTPs. As a result, the system could collapse or fail to generate a new OTP once all possible unique values were taken. This fork resolves the issue by properly invalidating all expired OTPs, ensuring that the system can reliably generate new, unique codes.
 ### Key Benefits
 
 - 🔒 **Enhanced Security**: No passwords to be hacked, phished, or forgotten
